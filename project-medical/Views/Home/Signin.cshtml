@@ -1,0 +1,61 @@
+﻿﻿﻿
+<link href="~/Content/Site.css" rel="stylesheet" />
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css">
+
+@{
+    ViewBag.Title = "Signin";
+    Layout = "~/Views/Shared/_LayoutP.cshtml";
+}
+
+
+<div class="container">
+    <br /><br /><br /><br />
+    <div class="col-xl-7 float-left  no-padding-right">
+        <p class="font-size-30"><small>Sử dụng tài khoản đã đăng ký</small></p>
+        <br />
+        @using (Html.BeginForm("Signin", "Home", FormMethod.Post))
+        {
+            <form>
+                <div class="form-group">
+                    <label class="col-xl-3 font-weight-bold float-left no-padding-left">Tài Khoản</label>
+                    @Html.TextBox("userName", ViewBag.CurrentFilter as string, new { @class = "form-control col-xl-5", Type = "text" })
+                </div>
+
+                <div class="form-group">
+                    <label class="col-xl-3 font-weight-bold float-left no-padding-left">Mật Khẩu</label>
+                    @Html.TextBox("password", ViewBag.CurrentFilter as string, new { @class = "form-control col-xl-5", Type = "password" })
+                </div>
+
+                <div class="form-group form-check">
+                    <input type="checkbox" class="form-check-input">
+                    <label class="form-check-label padding-right-15">Lưu tài khoản</label> <div class="text-danger float-right col-xl-9 no-padding-left"> @ViewBag.Fail</div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-xl-3 float-left no-padding-left">
+                        <button type="submit" class="btn btn-outline-dark">Đăng Nhập</button>
+                    </div>
+
+                    <div class="col-xl-5 float-left ">
+                        <p> Nếu chưa có tài khoản, bạn có thể thực hiện @Html.ActionLink("đăng Ký tại đây", "Signup", new { }, new { @class = "" }). </p>
+                    </div>
+                </div>
+
+
+
+
+
+            </form>
+        }
+    </div>
+
+    <div class="col-xl-5 float-left ">
+        <p class="font-size-30"><small>Sử dụng tài khoản có sẵn</small></p>
+        <br />
+        <button class="btn btn-light col-xl-10 font-weight-bold font-size-23 text-primary"> <i class="fab fa-facebook-square text-primary font-size-30"></i> &nbsp; Facebook</button>
+        <button class="btn btn-light col-xl-10 font-weight-bold margin-top-20 font-size-23 "> <i class="fab fa-google text-warning font-size-30"></i> &nbsp;<span class="text-primary">G</span><span class="text-danger">o</span><span class="text-warning">o</span><span class="text-primary">g</span><span class="text-success">l</span><span class="text-danger">e</span></button>
+    </div>
+    <div class="clearfix"></div>
+    <br /><br /><br /><br />
+</div>
+

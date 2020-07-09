@@ -1,0 +1,55 @@
+﻿﻿﻿
+.dropright {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f5f5f5;
+    z-index: 1;
+    list-style: none;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.bg-green {
+    background-color: #00483e;
+}
+
+.text-color-green {
+    color: #333;
+}
+
+
+.text-span {
+    color: #4bffe3;
+}
+
+.center2 {
+    padding-top: 10px;
+}
+
+.center3 {
+    padding-top: 17px;
+}
+
+.icon {
+    font-size: 3em;
+    color: #3FACE6;
+}
+
+.icon2 {
+    font-size: 2.3em;
+    color: #3FACE6;
+}
+
+
+
+
+.div-hover:hover{
+    color: aqua;
+}

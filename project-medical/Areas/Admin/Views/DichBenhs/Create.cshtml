@@ -1,0 +1,103 @@
+﻿
+@model Model.EF.DichBenh
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+<div class="breadcrumb-holder">
+    <div class="container-fluid">
+        <ul class="breadcrumb">
+            <li class="breadcrumb-item"><a href="/Admin/DichBenhs">Trang chủ</a></li>
+            <li class="breadcrumb-item active"><a href="/Admin/DichBenhs">Danh sách dịch bệnh</a></li>
+            <li class="breadcrumb-item active">Thêm mới</li>
+        </ul>
+    </div>
+</div>
+<section class="forms">
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="container-fluid">
+            <header>
+                <h1 class="h3 display icon-bars">  Thêm mới dịch bệnh</h1>
+            </header>
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <form class="form-horizontal">
+            <div class="form-group row">
+                <div class="col-sm-2">
+                    <label>Tên dịch</label>
+                </div>
+                <div class="col-sm-10">
+                    @Html.EditorFor(model => model.TenDich, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.TenDich, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-sm-2">
+                    <label>Phạm vi thống kê</label>
+                </div>
+                <div class="col-sm-10">
+                    @Html.EditorFor(model => model.PhamVi, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.PhamVi, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-sm-2">
+                    <label>Số ca mắc bệnh</label>
+                </div>
+                <div class="col-sm-10">
+                    @Html.EditorFor(model => model.SoCaMac, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.SoCaMac, "", new { @class = "text-danger" })
+                </div>
+
+            </div>
+          
+            <div class="form-group row">
+                <div class="col-sm-2">
+                    <label>Số ca tử vong</label>
+                </div>
+                <div class="col-sm-10">
+                    @Html.EditorFor(model => model.TuVong, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.TuVong, "", new { @class = "text-danger" })
+                </div>
+
+            </div>
+            <div class="form-group row">
+                <div class="col-sm-2">
+                    <label>Số ca hồi phục</label>
+                </div>
+                <div class="col-sm-10">
+                    @Html.EditorFor(model => model.DaKhoi, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.DaKhoi, "", new { @class = "text-danger" })
+                </div>
+
+            </div>
+            <div class="form-group row">
+                <div class="col-sm-2">
+                    <label>Ngày cập nhât</label>
+                </div>
+                <div class="col-sm-10">
+                    @Html.EditorFor(model => model.NgCapNhap, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.NgCapNhap, "", new { @class = "text-danger" })
+                </div>
+
+            </div>
+            <div class="form-group row">
+                <div class="col-sm-4 offset-sm-2">
+                    <a href="/Admin/DichBenhs" class="text-white btn btn-dark"> Quay lại</a>
+                    <input type="submit" class="btn btn-primary" value="Thêm mới">
+                </div>
+            </div>
+        </form>
+        </div>
+    }
+
+</section>
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

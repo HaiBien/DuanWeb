@@ -1,0 +1,81 @@
+﻿
+<section>
+    <div class="container ">
+        <br />
+        <div class="card border border-info">
+            <div class="card-header border-bottom border-danger">
+                <div class="display icon-bars"> <p> <i class="fas fa-list"></i>  DANH SÁCH LỊCH HẸN</p></div>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-striped border table-bordered table-hover">
+                        <thead>
+                            <tr class="table-primary">
+                                <th style="width:5%">STT</th>
+                                <th class="text-center">Câu hỏi</th>
+                                <th class="text-center">Ngày hỏi</th>
+                                <th class="text-center">Trạng thái</th>
+                                <th style="width:5%" class="text-center"><center>#</center></th>
+                            </tr>
+                        </thead>
+                        @{
+                            var i = 1;
+
+                        }
+
+                        @foreach (var item in Model)
+                        {
+
+                            <tr class="table-light">
+                                <td style="width:5%" class="text-center">
+                                    @(i++)
+                                </td>
+                                <td>
+                                    @item.CauHoi
+                                </td>
+                                <td>
+                                    @item.NgayHoi
+                                </td>
+                                <td>
+                                    @{
+
+                                        if (item.TrangThai == 0)
+                                        {
+
+
+                                            <h6 class="text-warning" style="padding-left:2em;" data-toggle="tooltip" title="Câu hỏi đã được chuyển đến bác sĩ"><span class="badge badge-warning text-dark"><i class="fas fa-pause"></i> Đang xử lý</span></h6>
+
+
+                                        }
+                                        else
+                                        {
+
+                                            <h6 style="padding-left:2em;">  <span class="badge badge-success"><i class="fas fa-check-square"></i> Đã trả lời </span></h6>
+
+
+                                        }
+                                    }
+
+                                </td>
+
+
+                                <td style="width:5%" class="text-center">
+
+
+                                    @{
+                                        if (item.TrangThai != 0)
+                                        {
+                                            <a href="@Url.Action("IndexCH","CauHoi", new { IDCauHoi = item.IDCauHoi })" class="see text-center" data-toggle="tooltip" title="Xem câu trả lời"><i class="fas fa-eye" style="padding-left:2em;"></i></a>
+                                        }
+                                    }
+                                </td>
+                            </tr>
+                        }
+
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+

@@ -1,0 +1,101 @@
+﻿
+@model PagedList.IPagedList<Model.EF.DichBenh>
+@using PagedList.Mvc;
+<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<div class="breadcrumb-holder  border border-danger">
+    <div class="container-fluid">
+        <ul class="breadcrumb">
+            <li class="breadcrumb-item"><a href="/Admin/Dichbenhs">Home</a></li>
+            <li class="breadcrumb-item active">Danh sách dịch bệnh</li>
+        </ul>
+    </div>
+</div>
+<section>
+    <div class="container-fluid">
+       
+        <header>
+            @using (Html.BeginForm("Index", "DichBenhs", FormMethod.Get))
+            {
+                <p>
+                    Tên dịch : @Html.TextBox("SearchString", ViewBag.CurrentFilter as string)
+                    <input type="submit" value="Search" />
+                </p>
+            }
+            
+        </header>
+        <div class="card border border-info">
+            <div class="card-header border-bottom border-danger">
+                <div class="display icon-bars">  Danh sách dịch bệnh</div>
+            </div>
+            <div class="card-body ">
+                <div class="table-responsive">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr class="table-primary">
+                                <th>STT</th>
+                                <th>Tên dịch</th>
+                                <th>Phạm vi thống kê</th>
+                                <th>Số ca mắc</th>
+                                <th>Số ca tử vong</th>
+                                <th>Số ca hồi phục</th>
+                                <th>Ngày cập nhật</th>
+                                <th><center>@Html.ActionLink("Thêm mới ++", "Create", new { @class = "text-white" })</center></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @{
+                                var i = 1;
+                            }
+                            @foreach (var item in Model)
+                            {
+
+                            <tr>
+                                <td>
+                                    @(i++)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.TenDich)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.PhamVi)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.SoCaMac)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.TuVong)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.DaKhoi)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.NgCapNhap)
+                                </td>
+                               
+                                <td>
+
+                                    <center>
+                                        <a href="@Url.Action("Edit", new { id = item.IDDichBenh }) " class="text-primary fa fa-edit">
+                                        </a> |
+
+                                        <a href="@Url.Action("Delete", new { id = item.IDDichBenh })" class="text-danger fa fa-trash">
+                                        </a>
+
+                                    </center>
+                                </td>
+                            </tr>
+                            }
+                        </tbody>
+                    </table>
+                    @Html.PagedListPager(Model, page => Url.Action("Index",
+                        new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

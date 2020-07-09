@@ -1,0 +1,45 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutP.cshtml";
+}
+
+    <section>
+        <div class="container ">
+            <br /> <br />
+                   <div class="card border border-info">
+                       <div class="card-header border-bottom border-danger">
+                           <div class=""> <p><p><span class="font-weight-bold">Câu hỏi: </span> @Model.CauHoi</p></div>
+                       </div>
+                       <div class="card-header border-bottom border-danger">
+                           <div class="display icon-bars"><p><span class="font-weight-bold">Ngày hỏi: </span>  @Model.NgayHoi</p></div>
+                       </div>
+                       <div class="card-body">
+                           <div class="table-responsive">
+                               <span class="font-weight-bold">Trả lời </span>@Html.Raw(Model.TraLoi)
+                           </div>
+                       </div>
+                   </div>
+            <br /><br />
+        </div>
+    </section>
+    @*<section>
+        <div class="container">
+
+            <br /><br /><br /><br />
+            <div>
+                <p><span class="font-weight-bold">Câu hỏi: </span> @Model.CauHoi</p>
+                <hr />
+            </div>
+            <div>
+                
+                <hr />
+            </div>
+            <div>
+                <p><span class="font-weight-bold">Ngày hỏi: </span>  @Model.NgayHoi</p>
+            </div>
+
+
+
+        </div>
+    </section>*@

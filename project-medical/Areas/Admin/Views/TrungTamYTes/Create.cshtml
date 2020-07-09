@@ -1,0 +1,71 @@
+﻿@model Model.EF.TrungTamYTe
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+    <div class="breadcrumb-holder">
+        <div class="container-fluid">
+            <ul class="breadcrumb">
+                <li class="breadcrumb-item"><a href="/Admin/TrungTamYTes">Trang chủ</a></li>
+                <li class="breadcrumb-item active"><a href="/Admin/TrungTamYTes">Danh sách cơ sở y tế</a></li>
+                <li class="breadcrumb-item active">Thêm mới</li>
+            </ul>
+        </div>
+    </div>
+    <section class="forms">
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="container-fluid">
+                <header>
+                    <h1 class="h3 display icon-bars">  Thêm mới cơ sở y tế</h1>
+                </header>
+                <hr />
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <form class="form-horizontal">
+                    <div class="form-group row">
+                        <div class="col-sm-2">
+                            <label>Tên cơ sở y tế</label>
+                        </div>
+                        <div class="col-sm-10">
+                            @Html.EditorFor(model => model.TenTrungTam, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.TenTrungTam, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-sm-2">
+                            <label>Địa chỉ</label>
+                        </div>
+                        <div class="col-sm-10">
+                            @Html.EditorFor(model => model.DiaChi, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.DiaChi, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-sm-2">
+                            <label>Tỉnh/Thành phố</label>
+                        </div>
+                        <div class="col-sm-10">
+                            @Html.DropDownList("IDTinh", null, htmlAttributes: new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.IDTinh, "", new { @class = "text-danger" })
+                        </div>
+
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-sm-4 offset-sm-2">
+                            <a href="/Admin/TrungTamYTes" class="text-white btn btn-dark"> Quay lại</a>
+                            <input type="submit" class="btn btn-primary" value="Thêm mới">
+                        </div>
+                    </div>
+                </form>
+            </div>
+        }
+
+    </section>
+       
+
+     @section Scripts {
+          @Scripts.Render("~/bundles/jqueryval")
+     }

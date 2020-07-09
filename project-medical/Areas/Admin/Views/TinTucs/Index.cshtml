@@ -1,0 +1,88 @@
+﻿
+@model PagedList.IPagedList<Model.EF.TinTuc>
+@using PagedList.Mvc;
+<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<div class="breadcrumb-holder border border-danger">
+    <div class="container-fluid">
+        <ul class="breadcrumb">
+            <li class="breadcrumb-item"><a href="/Admin/TinTucs">Home</a></li>
+            <li class="breadcrumb-item active">Danh sách tin tức</li>
+        </ul>
+    </div>
+</div>
+<section>
+    <div class="container-fluid ">
+
+        <header>
+            @using (Html.BeginForm("Index", "TinTucs", FormMethod.Get))
+            {
+                <p>
+                    Tên bác sĩ : @Html.TextBox("SearchString", ViewBag.CurrentFilter as string)
+                    <input type="submit" value="Search" />
+                </p>
+            }
+
+        </header>
+        <div class="card border border-info">
+            <div class="card-header border-bottom border-danger">
+                <div class="display icon-bars">  Danh sách tin tức</div>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr class="table-primary">
+                                <th>STT</th>
+                                <th>Tiêu đề</th>
+                                <th>Mô tả</th>
+                                <th>Ngày đăng</th>
+                               
+                                <th><center>@Html.ActionLink("Thêm mới ++", "Create", new { @class = "text-white " })</center></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @{
+                                var i = 1;
+                            }
+                            @foreach (var item in Model)
+                            {
+
+                                <tr class="table-light">
+                                    <td>
+                                        @(i++)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.TieuDe)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.MoTa)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.NgayDang)
+                                    </td>
+                                    <td>
+
+                                        <center>
+                                            <a href="@Url.Action("Edit", new { id = item.IDTinTuc }) " class="text-dark fa fa-edit">
+                                            </a> |
+                                            <a href="@Url.Action("Details", new { id = item.IDTinTuc }) " class="text-primary fa fa-eye-slash">
+                                            </a> 
+
+                                        </center>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                    @Html.PagedListPager(Model, page => Url.Action("Index",
+                        new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

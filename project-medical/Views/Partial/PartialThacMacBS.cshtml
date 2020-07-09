@@ -1,0 +1,25 @@
+﻿
+<style>
+    .cauhoi {
+        padding-top: 1em;
+        margin-top: 1em;
+        border-radius: 0.5em;
+        border: 0.5px solid #CCCCCC;
+    }
+</style>
+@foreach (var i in Model)
+{
+    <div class="cauhoi">
+        <div class="row">
+            <div class="col-md-8">
+                <p class="font-weight-bold" style="padding-left:1em;">@i.CauHoi</p>
+            </div>
+            <div class="col-md-2 text-center">
+                <button class="btn btn-success" > Trả lời </button>
+            </div>
+            
+
+        </div>
+    </div>
+}
+

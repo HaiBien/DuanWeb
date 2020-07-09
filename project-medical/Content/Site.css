@@ -1,0 +1,167 @@
+﻿﻿﻿ /* Set padding to keep content from hitting the edges */
+body {
+    font-family: Tahoma;
+    font-size: 12px;
+}
+
+.body-content {
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+.dl-horizontal dt {
+    white-space: normal;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+.input-width-300 {
+    max-width: 300px;
+}
+
+.text-white {
+    color: white;
+}
+
+.no-padding-right {
+    padding-right: 0px;
+}
+
+.no-padding-left {
+    padding-left: 0px;
+}
+
+.padding-top-35 {
+    padding-top: 2em;
+}
+
+.padding-top-10 {
+    padding-top: 0.6em;
+}
+
+.padding-left-10 {
+    padding-left: 0.6em;
+}
+
+.padding-right-10 {
+    padding-right: 0.6em;
+}
+
+.padding-bot-10 {
+    padding-bottom: 0.6em;
+}
+
+.padding-all {
+    padding-top: 0.5em;
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+}
+
+.padding-right-15 {
+    padding-right: 15px;
+}
+
+.padding-right-35 {
+    padding-right: 35px;
+}
+
+.padding-left-35 {
+    padding-left: 35px;
+}
+
+.margin-left-30 {
+    margin-left: 30px;
+}
+
+.margin-top-20 {
+    margin-top: 20px;
+}
+
+.margin-top-10 {
+    margin-top: 10;
+}
+
+.margin-bottom-10 {
+    margin-bottom: 10px;
+}
+
+.sanpham:hover {
+    color: forestgreen;
+}
+
+.center {
+    margin: 0 auto;
+    width: auto;
+}
+
+.font-size-30 {
+    font-size: 30px;
+}
+
+.font-size-23 {
+    font-size: 23px;
+}
+
+.font-size-20 {
+    font-size: 20px;
+}
+
+
+
+.text-span {
+    color: #4bffe3;
+}
+
+.bg-light1 {
+    background-color: #F8F8F8;
+}
+
+.bg-green {
+    background-color: #00483e;
+}
+
+.img-center {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.div-border {
+    border: 2px solid black
+}
+
+.min {
+    min-height: 700px;
+}
+
+.bg-blue {
+    background-color: #E0FBFF;
+}
+
+.text-cl-blue {
+    color: #4DA1E8;
+}
+
+.bg-yellow {
+    background-color: #FFF2D4;
+}
+
+.text-cl-yellow {
+    color: #FF5900;
+}
+
+.radius {
+    border-radius: 0.3em;
+}
+
+.radius1 {
+    border-radius: 50%;
+}
+
+ul li {
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    display: inline;
+}

@@ -1,0 +1,16 @@
+E:\NamHoc3_2019_2020\200dolar\project-medical\Model\bin\Debug\Model.dll.config
+E:\NamHoc3_2019_2020\200dolar\project-medical\Model\bin\Debug\Model.dll
+E:\NamHoc3_2019_2020\200dolar\project-medical\Model\bin\Debug\Model.pdb
+E:\NamHoc3_2019_2020\200dolar\project-medical\Model\bin\Debug\EntityFramework.dll
+E:\NamHoc3_2019_2020\200dolar\project-medical\Model\bin\Debug\EntityFramework.SqlServer.dll
+E:\NamHoc3_2019_2020\200dolar\project-medical\Model\bin\Debug\EntityFramework.xml
+E:\NamHoc3_2019_2020\200dolar\project-medical\Model\bin\Debug\EntityFramework.SqlServer.xml
+E:\NamHoc3_2019_2020\200dolar\project-medical\Model\obj\Debug\Model.csprojAssemblyReference.cache
+E:\NamHoc3_2019_2020\200dolar\project-medical\Model\obj\Debug\Model.csproj.CoreCompileInputs.cache
+E:\NamHoc3_2019_2020\200dolar\project-medical\Model\obj\Debug\Model.csproj.CopyComplete
+E:\NamHoc3_2019_2020\200dolar\project-medical\Model\obj\Debug\Model.dll
+E:\NamHoc3_2019_2020\200dolar\project-medical\Model\obj\Debug\Model.pdb
+E:\NamHoc3_2019_2020\200dolar\project-medical\Model\bin\Debug\PagedList.dll
+E:\NamHoc3_2019_2020\200dolar\project-medical\Model\bin\Debug\PagedList.Mvc.dll
+E:\NamHoc3_2019_2020\200dolar\project-medical\Model\bin\Debug\PagedList.xml
+E:\NamHoc3_2019_2020\200dolar\project-medical\Model\bin\Debug\PagedList.Mvc.xml

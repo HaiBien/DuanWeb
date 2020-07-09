@@ -1,0 +1,12 @@
+E:\NamHoc3_2019_2020\200dolar\project-medical\Models\bin\Debug\Models.dll.config
+E:\NamHoc3_2019_2020\200dolar\project-medical\Models\bin\Debug\Models.dll
+E:\NamHoc3_2019_2020\200dolar\project-medical\Models\bin\Debug\Models.pdb
+E:\NamHoc3_2019_2020\200dolar\project-medical\Models\bin\Debug\EntityFramework.dll
+E:\NamHoc3_2019_2020\200dolar\project-medical\Models\bin\Debug\EntityFramework.SqlServer.dll
+E:\NamHoc3_2019_2020\200dolar\project-medical\Models\bin\Debug\EntityFramework.xml
+E:\NamHoc3_2019_2020\200dolar\project-medical\Models\bin\Debug\EntityFramework.SqlServer.xml
+E:\NamHoc3_2019_2020\200dolar\project-medical\Models\obj\Debug\Models.csprojAssemblyReference.cache
+E:\NamHoc3_2019_2020\200dolar\project-medical\Models\obj\Debug\Models.csproj.CoreCompileInputs.cache
+E:\NamHoc3_2019_2020\200dolar\project-medical\Models\obj\Debug\Models.csproj.CopyComplete
+E:\NamHoc3_2019_2020\200dolar\project-medical\Models\obj\Debug\Models.dll
+E:\NamHoc3_2019_2020\200dolar\project-medical\Models\obj\Debug\Models.pdb

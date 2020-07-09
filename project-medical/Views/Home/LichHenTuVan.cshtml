@@ -1,0 +1,107 @@
+﻿
+@{
+    ViewBag.Title = "LichHenTuVan";
+    Layout = "~/Views/Shared/_LayoutP.cshtml";
+}
+
+<style>
+    .cauhoi {
+        padding-top: 1em;
+        margin-top: 1em;
+        border-radius: 0.5em;
+        border: 0.5px solid #CCCCCC;
+    }
+</style>
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+
+@{
+    var u = Session["useView"] as Model.EF.BenhNhan;
+    var d = Session["useView"] as Model.EF.Bacsi;
+}
+
+
+<section>
+    <div class="container ">
+        <br /> <br />
+        <div class="card border border-info">
+            <div class="card-header border-bottom border-danger">
+                <div class="display icon-bars"> <p> <i class="fas fa-list"></i> LỊCH HẸN TƯ VẤN</p></div>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-striped border table-bordered table-hover">
+                        <thead>
+                            <tr class="table-primary">
+                                <th style="width:5%">STT</th>
+                                <th class="text-center">Họ tên</th>
+                                <th class="text-center">Bắt đầu</th>
+                                <th class="text-center">Kết thúc</th>
+                                <th class="text-center">Ghi chú</th>
+                                <th class="text-center">Trạng thái</th>
+                                <th style="width:5%" class="text-center"><center>#</center></th>
+                            </tr>
+                        </thead>
+                        @{
+                            var i = 1;
+                            DateTime ngay = DateTime.Now;
+                        }
+                        @foreach (var item in Model)
+                        {
+
+                            <tr class="table-light">
+                                <td style="width:5%" class="text-center">
+                                    @(i++)
+                                </td>
+                                <td>
+                                    @item.BenhNhan.HoTen
+                                </td>
+                                <td>
+                                    @item.BatDau
+                                </td>
+                                <td>
+                                    @item.KetThuc
+                                </td>
+                                <td>
+                                    @item.GhiChu
+                                </td>
+                                <td>
+                                    @{ if (item.BatDau <= ngay && ngay <= item.KetThuc)
+                                        {
+
+                                            <h6><span class="badge badge-success">Đã đến giờ</span></h6>
+
+                                        }
+                                        else if (ngay > item.KetThuc)
+                                        {
+                                            <h6><span class="badge badge-danger">Quá giờ hẹn</span></h6>
+                                        }
+                                        else
+                                        {
+                                            <h6><span class="badge badge-warning">Chưa đến hẹn</span></h6>
+                                        }
+                                    }
+                                </td>
+                                <td style="width:5%" class="text-center">
+                                    <a href="@Url.Action("", new { IDLich = item.IDLich }) " class="text-danger fas fa-window-close" data-toggle="tooltip" title="Hủy lịch!"></a>
+                                </td>
+                            </tr>
+                        }
+                    </table>
+
+                </div>
+
+            </div>
+        </div>
+        <br />
+        <br />
+    </div>
+</section>
+<script>
+    $(document).ready(function () {
+        $('[data-toggle="tooltip"]').tooltip();
+    });
+</script>

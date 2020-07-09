@@ -1,0 +1,15 @@
+﻿@foreach (var item in Model )
+{
+
+        <div class="col-md-6 float-right">
+            <div class="padding-all">
+                <h4 class="text-center">@item.PhamVi</h4>
+                <hr />
+                <p>Số ca mắc: @item.SoCaMac</p>
+                <p>Đã khỏi: @item.DaKhoi</p>
+                <p>Tử vong: @item.TuVong </p>
+                <p>Ngày cập nhập: @item.NgCapNhap </p>
+            </div>
+        </div>
+
+}

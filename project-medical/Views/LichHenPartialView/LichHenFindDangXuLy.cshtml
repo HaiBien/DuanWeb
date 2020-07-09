@@ -1,0 +1,89 @@
+﻿
+
+
+@{ DateTime d1 = DateTime.Now; }
+
+<section>
+    <div class="container ">
+        <br />
+        <div class="card border border-info">
+            <div class="card-header border-bottom border-danger">
+                <div class="display icon-bars"> <p> <i class="fas fa-list"></i>  DANH SÁCH LỊCH HẸN</p></div>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-striped border table-bordered table-hover">
+                        <thead>
+                            <tr class="table-primary">
+                                <th style="width:5%">STT</th>
+                                <th class="text-center">Họ tên</th>
+                                <th class="text-center">Bắt đầu</th>
+                                <th class="text-center">Kết thúc</th>
+                                <th class="text-center">Ghi chú</th>
+                                <th class="text-center">Trạng thái</th>
+                                <th style="width:5%" class="text-center"><center>#</center></th>
+                            </tr>
+                        </thead>
+                        @{
+                            var i = 1;
+                        }
+                        @foreach (var item in Model)
+                        {
+
+                            <tr class="table-light">
+                                <td style="width:5%" class="text-center">
+                                    @(i++)
+                                </td>
+                                <td>
+                                    @item.Bacsi.HoTen
+                                </td>
+                                <td>
+                                    @item.BatDau
+                                </td>
+                                <td>
+                                    @item.KetThuc
+                                </td>
+                                <td>
+                                    @item.GhiChu
+                                </td>
+                                <td>
+                                    @{
+                                        if (item.BatDau <= d1 && d1 <= item.KetThuc)
+                                        {
+
+                                            <p style="padding-left: 1em;"><a href="@item.LinkZoom" target="_blank" class="badge badge-primary" data-toggle="tooltip" title="Nhấn vào để tham gia buổi tư vấn">Tham gia</a></p>
+
+                                        }
+                                        else
+                                        {
+                                            if (item.TrangThai == 0)
+                                            {
+                                                <h6 class="text-warning" style="padding-left:1em;"><span class="badge badge-warning">Đang xử lý</span></h6>
+                                            }
+                                            else if (item.TrangThai == 1)
+                                            {
+                                                <h6 style="padding-left:1em;"><span class="badge badge-success" data-toggle="tooltip" title="Nhớ tham gia đúng hẹn nhé!">Đã lên lịch</span></h6>
+                                            }
+                                            else
+                                            {
+                                                <h6 class="text-success" style="padding-left:1em;"><span class="badge badge-info">Hoàn thành</span></h6>
+                                            }
+                                        }
+                                    }
+                                </td>
+
+
+                                <td style="width:5%">
+
+                                    <center>
+                                        <a href="@Url.Action("", new { IDLich = item.IDLich }) " class="text-danger fas fa-window-close" data-toggle="tooltip" title="Hủy lịch!"></a>
+                                    </center>
+                                </td>
+                            </tr>
+                        }
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

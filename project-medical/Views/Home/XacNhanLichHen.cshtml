@@ -1,0 +1,75 @@
+﻿
+@{
+    ViewBag.Title = "XacNhanLichHen";
+    Layout = "~/Views/Shared/_LayoutP.cshtml";
+}
+<style>
+    .cauhoi {
+        padding-top: 1em;
+        margin-top: 1em;
+        border-radius: 0.5em;
+        border: 0.5px solid #CCCCCC;
+    }
+</style>
+@{
+    var u = Session["useView"] as Model.EF.BenhNhan;
+    var d = Session["useView"] as Model.EF.Bacsi;
+}
+
+@{ DateTime d1 = DateTime.Now; }
+
+<section>
+    <div class="container ">
+        <br /> <br />
+        <div class="card border border-info">
+            <div class="card-header border-bottom border-danger">
+                <div class="display icon-bars"> <p> <i class="fas fa-list"></i>  DANH SÁCH LỊCH HẸN</p></div>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-striped border table-bordered table-hover">
+                        <thead>
+                            <tr class="table-primary">
+                                <th style="width:5%">STT</th>
+                                <th class="text-center">Họ tên</th>
+                                <th class="text-center">Thời gian</th>
+                                <th class="text-center">Ghi chú</th>
+                                <th style="width:5%" class="text-center"><center>#</center></th>
+                            </tr>
+                        </thead>
+                            @{
+                                var i = 1;
+                            }
+                            @foreach (var item in Model)
+                            {
+
+                                <tr class="table-light">
+                                    <td style="width:5%" class="text-center">
+                                        @(i++)
+                                    </td>
+                                    <td>
+                                        @item.BenhNhan.HoTen
+                                    </td>
+                                    <td>
+                                        @item.BatDau
+                                    </td>
+                                    <td>
+                                        @item.GhiChu
+                                    </td>
+
+
+                                    <td style="width:5%">
+
+                                        <center>
+                                            <a href="@Url.Action("XacNhanLH", new { IDLich = item.IDLich }) " class="text-dark fa fa-edit">
+                                                </a>
+                                        </center>
+                                    </td>
+                                </tr>
+                            }
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,97 @@
+﻿
+
+@model PagedList.IPagedList<Model.EF.HoiDap>
+@using PagedList.Mvc;
+<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<div class="breadcrumb-holder  border border-danger">
+    <div class="container-fluid">
+        <ul class="breadcrumb">
+            <li class="breadcrumb-item"><a href="/Admin/HoiDaps">Home</a></li>
+            <li class="breadcrumb-item active">Danh sách câu hỏi</li>
+        </ul>
+    </div>
+</div>
+<section>
+    <div class="container-fluid">
+
+        <header>
+            @using (Html.BeginForm("Index", "HoiDaps", FormMethod.Get))
+            {
+                <p>
+                    Câu hỏi : @Html.TextBox("SearchString", ViewBag.CurrentFilter as string)
+                    <input type="submit" value="Search" />
+                </p>
+            }
+
+        </header>
+        <div class="card border border-info">
+            <div class="card-header border-bottom border-danger">
+                <div class="display icon-bars">  Danh sách câu hỏi</div>
+            </div>
+            <div class="card-body ">
+                <div class="table-responsive">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr class="table-primary">
+                                <th>STT</th>
+                                <th>Người hỏi</th>
+                                <th>Nội dung câu hỏi</th>
+                                @*<th>Trả lời</th>*@
+                                <th>Ngày hỏi</th>
+                                <th>Trạng thái</th>                                       
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @{
+                                var i = 1;
+                            }
+                            @foreach (var item in Model)
+                            {
+
+                                <tr>
+                                    <td>
+                                        @(i++)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.BenhNhan.HoTen)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.CauHoi)
+                                    </td>
+                                    @*<td>
+                                        @Html.DisplayFor(modelItem => item.TraLoi)
+                                    </td>*@
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.NgayHoi)
+                                    </td>
+                                    <td>
+                                       @{ 
+                                           if(item.TrangThai == 0)
+                                           {
+                                               <p class="text-danger">Chờ trả lời</p>
+                                           }
+                                           else
+                                           {
+                                               <p class="text-success">Đã trả lời</p>
+                                           }
+                                       }
+                                        @*@Html.DisplayFor(modelItem => item.TrangThai)*@
+                                    </td>
+ 
+
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                    @Html.PagedListPager(Model, page => Url.Action("Index",
+                        new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

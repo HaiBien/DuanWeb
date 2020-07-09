@@ -1,0 +1,25 @@
+﻿@foreach (var i in Model)
+{
+    
+        <div class="single-recent-blog col-lg-4 col-md-4">
+            <a href=" @Url.Action("Index","TinTuc", new { IDTinTuc = i.IDTinTuc })">
+                <div class="thumb">
+                    <img class="f-img img-fluid mx-auto radius" src=@Url.Content(i.img) alt="">
+                </div>
+
+                <br />
+                <h4>@i.TieuDe</h4>
+                <br />
+
+                <p>
+                    @i.MoTa
+                </p>
+                <div class="bottom d-flex justify-content-between align-items-center flex-wrap">
+                    <div class="meta">
+                        <i class="far fa-calendar-alt"></i> @i.NgayDang
+                    </div>
+                </div>
+            </a>
+    </div>
+
+}

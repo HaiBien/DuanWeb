@@ -1,0 +1,118 @@
+﻿
+
+
+@model PagedList.IPagedList<Model.EF.LichHen>
+@using PagedList.Mvc;
+<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<div class="breadcrumb-holder  border border-danger">
+    <div class="container-fluid">
+        <ul class="breadcrumb">
+            <li class="breadcrumb-item"><a href="/Admin/ThongBaos">Home</a></li>
+            <li class="breadcrumb-item active">Danh sách thông báo</li>
+        </ul>
+    </div>
+</div>
+<section>
+    <div class="container-fluid">
+
+        <header>
+            @using (Html.BeginForm("Index", "LichHens", FormMethod.Get))
+            {
+                <p>
+                    Nội dung : @Html.TextBox("SearchString", ViewBag.CurrentFilter as string)
+                    <input type="submit" value="Search" />
+                </p>
+            }
+
+        </header>
+        <div class="card border border-info">
+            <div class="card-header border-bottom border-danger">
+                <div class="display icon-bars">  Danh sách thông báo</div>
+            </div>
+            <div class="card-body ">
+                <div class="table-responsive">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr class="table-primary">
+                                <th>STT</th>
+                                <th>Tên bệnh nhân</th>
+                                <th>Tên bác sĩ</th>
+                                <th>Thời gian bắt đầu</th>
+                                <th>Thời gian kết thúc</th>
+                                <th>Ghi chú</th>
+                                <th>Trạng thái</th>
+                                <th>Thao tác</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @{
+                                var i = 1;
+                            }
+                            @foreach (var item in Model)
+                            {
+
+                            <tr>
+                                <td>
+                                    @(i++)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.BenhNhan.HoTen)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Bacsi.HoTen)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.BatDau)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.KetThuc)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.GhiChu)
+                                </td>
+                                <td>
+                                    @{
+                                        if (item.TrangThai == 0)
+                                        {
+                                            <p class="text-info">Chưa gặp</p>
+                                        }
+                                        else if (item.TrangThai == -1)
+                                        {
+                                            <p class="text-danger">Đã hủy</p>
+                                        }
+                                        else
+                                        {
+                                            <p class="text-success">Đã gặp</p>
+                                        }
+                                    }
+
+                                </td>
+                                <td>
+
+                                    <center>
+                                        <a href="@Url.Action("Edit", new { id = item.IDLich }) " class="text-dark  fa fa-edit">
+                                        </a> |
+                                        <a href="@Url.Action("Details", new { id = item.IDLich }) " class="text-primary fa fa-eye-slash">
+                                        </a> |
+                                        <a href="@Url.Action("Delete", new { id = item.IDLich })" class="text-danger fa fa-trash">
+                                        </a>
+
+                                    </center>
+                                </td>
+                            </tr>
+                            }
+                        </tbody>
+                    </table>
+                    @Html.PagedListPager(Model, page => Url.Action("Index",
+                        new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
